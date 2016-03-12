@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
          public void onClick(View v) {
              //Sound Effect
              MediaPlayer mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.dog);
+
              mediaPlayer.start();
 
 
