@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createListView() {
 
-        int[] intIcon = {R.drawable.traffic_01, R.drawable.traffic_02, R.drawable.traffic_03,
+        final int[] intIcon = {R.drawable.traffic_01, R.drawable.traffic_02, R.drawable.traffic_03,
                 R.drawable.traffic_04, R.drawable.traffic_05, R.drawable.traffic_06,
                 R.drawable.traffic_07, R.drawable.traffic_08, R.drawable.traffic_09,
                 R.drawable.traffic_10, R.drawable.traffic_11, R.drawable.traffic_12,
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.traffic_19, R.drawable.traffic_20};
         // กำหนดตัวแปร String รูปแบบที่ 1
 
-        String[] titleStrings = new String[20];
+        final String[] titleStrings = new String[20];
         // กำหนดตัวแปร String รูปแบบที่ 2
         titleStrings[0] = "หัวข้อหลัก 1";
         titleStrings[1] = "หัวข้อหลัก 2";
@@ -78,6 +79,20 @@ public class MainActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(MainActivity.this,
                 intIcon, titleStrings, detailStrings);
         trafficListView.setAdapter(myAdapter);
+
+
+        trafficListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("Title", titleStrings[i]);
+                intent.putExtra("image", intIcon[i]);
+                intent.putExtra("index", i);
+                startActivity(intent);
+
+
+            }   // onItemClick
+        });
 
 
 
