@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 intIcon, titleStrings, detailStrings);
         trafficListView.setAdapter(myAdapter);
 
+
+
     }// CreateListView
 
 
